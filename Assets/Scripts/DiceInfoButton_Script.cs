@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class DiceInfoButton_Script : MonoBehaviour
 {
+    // 주사위 정보를 보여주는 패널을 활성화
     public void OnClickButton()
     {
         GameObject diceInfoGameObject = GameObject.Find("MyDice").transform.Find("Dice Info").gameObject;
