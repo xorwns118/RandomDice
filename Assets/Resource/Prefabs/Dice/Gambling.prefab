@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4353521908096173440}
   - component: {fileID: 8744328260569361659}
   - component: {fileID: 5777476769587162882}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Pip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 3046663890627024821}
   - component: {fileID: 8388455117592422928}
   - component: {fileID: 6904296726580195834}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Star
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 696953268244838382}
   - component: {fileID: -5497907779291201648}
   - component: {fileID: 3421309525640032882}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Gambling
   m_TagString: Untagged
   m_Icon: {fileID: 0}

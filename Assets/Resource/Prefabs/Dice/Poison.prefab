@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 576959121779927705}
   - component: {fileID: 1105847401240649843}
   - component: {fileID: 3463567433856331075}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Pip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 2230375819702699959}
   - component: {fileID: -855794351658098397}
   - component: {fileID: 921373086884053155}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Poison
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 1630154607412335346}
   - component: {fileID: 6359901190027431469}
   - component: {fileID: 5448980315249521145}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Star
   m_TagString: Untagged
   m_Icon: {fileID: 0}

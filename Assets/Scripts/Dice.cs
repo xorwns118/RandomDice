@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Dice : MonoBehaviour
@@ -37,6 +38,18 @@ public class Dice : MonoBehaviour
         new Vector3[] { new(-20, 25, 0), new(20, 25, 0), new(-20, 5, 0),
                         new(20, 5, 0), new(-20, -15, 0), new(20, -15, 0) }
     };
+
+    public void SetNewDicePip()
+    {
+        for(int i = 0; i < currentValue - 1; i++)
+        {
+            GameObject newPip = GameObject.Instantiate(pip);
+            newPip.transform.SetParent(gameObject.transform);
+            pips.Add(newPip);
+        }
+
+        SetPipPosition(currentValue - 1);
+    }
 
     // ÁÖ»çÀ§ ´«±Ý »ó½Â
     public void Upgrade()
@@ -82,7 +95,7 @@ public class Dice : MonoBehaviour
 
         pips.Add(newPip);
 
-        SetPosition(value);
+        SetPipPosition(value);
 
         currentValue++;
     }
@@ -156,7 +169,7 @@ public class Dice : MonoBehaviour
 
         pips.RemoveAt(value);
 
-        SetPosition(value - 1);
+        SetPipPosition(value - 1);
 
         currentValue--;
     }
@@ -166,7 +179,7 @@ public class Dice : MonoBehaviour
         StartCoroutine(RemovePipCoroutine(value));
     }
 
-    private void SetPosition(int value)
+    private void SetPipPosition(int value)
     {
         Vector3[] pipsValue = pipsPosition[value];
 

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6884116510475489287}
   - component: {fileID: 553184098409543592}
   - component: {fileID: 2620822640928223210}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Pip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 6567729648016732738}
   - component: {fileID: 5124517315793904193}
   - component: {fileID: 6297848230380615068}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Electro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 800724377939608672}
   - component: {fileID: 3905828670540791454}
   - component: {fileID: 3681767149939156144}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Star
   m_TagString: Untagged
   m_Icon: {fileID: 0}

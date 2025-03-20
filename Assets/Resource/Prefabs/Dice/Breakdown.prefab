@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9219015199572290664}
   - component: {fileID: 6856538193872717339}
   - component: {fileID: 1228943255273580164}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Star
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 8842329180261033773}
   - component: {fileID: 66999228091495633}
   - component: {fileID: 3385793895149315494}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Pip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 8645128106545839499}
   - component: {fileID: 6031520867398728250}
   - component: {fileID: 815420971352365601}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Breakdown
   m_TagString: Untagged
   m_Icon: {fileID: 0}

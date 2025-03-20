@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8852801537764721994}
   - component: {fileID: 6994319250932633262}
   - component: {fileID: 4341099223739677094}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Pip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 2582817026198137610}
   - component: {fileID: -408234145213782976}
   - component: {fileID: 8705815575408084769}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Iron
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 4112707401450090240}
   - component: {fileID: 4498263659397434560}
   - component: {fileID: 536502468710535334}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Star
   m_TagString: Untagged
   m_Icon: {fileID: 0}

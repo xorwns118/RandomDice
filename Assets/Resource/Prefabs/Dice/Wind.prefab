@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5539790745180825092}
   - component: {fileID: -2051528717874957432}
   - component: {fileID: 6974736162717591192}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Wind
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 5361094341116009668}
   - component: {fileID: 7635096660067172515}
   - component: {fileID: 4682362874921998686}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Star
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,7 +190,7 @@ GameObject:
   - component: {fileID: 3871046954081638919}
   - component: {fileID: 6272716732082842107}
   - component: {fileID: 4647471224371543198}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Pip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
