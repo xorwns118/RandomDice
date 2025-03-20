@@ -13,6 +13,7 @@ public class InitMyDice : MonoBehaviour
         StartCoroutine(InitDicesInfo());
     }
 
+    // 가지고 있는 주사위를 화면에 표시
     IEnumerator InitDicesInfo()
     {
         for (int i = 0; i < dicePrefs.Length; i++)

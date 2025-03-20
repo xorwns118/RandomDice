@@ -14,6 +14,7 @@ public class DiceInfo : MonoBehaviour
     public Text description;
     public ScrollRect scrollRect;
 
+    // 패널을 닫음과 동시에 스크롤 위치를 초기화 및 가져온 정보 초기화
     public void ClosePannel()
     {
         scrollRect.content.anchoredPosition = new Vector2(0, 0);

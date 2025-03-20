@@ -5,6 +5,6 @@ using UnityEngine.UI;
 
 public class MyDiceDeck : MonoBehaviour
 {
-    public Image[] dices;
-
+    //public Image[] dices;
+    //public GameObject[] myDeck;
 }
