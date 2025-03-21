@@ -14,8 +14,6 @@ public class RandomSpawnManager : MonoBehaviour
     public List<GameObject> empty;
     public List<GameObject> full;
 
-    DiceUpgradeManager diceUpgradeManager;
-
     private void Awake()
     {
         if (instance == null)
@@ -26,8 +24,6 @@ public class RandomSpawnManager : MonoBehaviour
 
     private void Start()
     {
-        diceUpgradeManager = FindAnyObjectByType<DiceUpgradeManager>();
-
         full = new List<GameObject>();
 
         for (int i = 0; i < myDeckTransform.Length; i++)
@@ -68,6 +64,6 @@ public class RandomSpawnManager : MonoBehaviour
         GameObject newDice = Instantiate(useableDice[randomDice], target.transform.parent);
         Dice dice = newDice.GetComponent<Dice>();
         dice.currentValue = newValue;
-        diceUpgradeManager.SetNewDicePip(dice);
+        DiceUpgradeManager.instance.SetNewDicePip(dice);
     }
 }

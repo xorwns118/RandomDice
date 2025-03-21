@@ -6,6 +6,16 @@ using UnityEngine.Rendering;
 
 public class DiceUpgradeManager : MonoBehaviour
 {
+    public static DiceUpgradeManager instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
+
     // 주사위 눈금 위치 리스트
     public static readonly Vector3[][] pipsPosition =
     {
