@@ -8,8 +8,8 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
 {
     private Vector3 defaultPos;
     public Transform parentPanel;
-    private static List<Dice> activeTargets = new(); // 합칠 수 있는 대상
-    private static List<Dice> nonTargets = new(); // 합칠 수 없는 대상
+    private List<Dice> activeTargets = new(); // 합칠 수 있는 대상
+    private List<Dice> nonTargets = new(); // 합칠 수 없는 대상
 
     // 드래그 시작
     public void OnBeginDrag(PointerEventData eventData)
@@ -100,6 +100,8 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
             float distance = Vector3.Distance(dice.transform.parent.TransformPoint(dice.transform.localPosition), 
                                               currentDice.transform.parent.TransformPoint(currentDice.transform.localPosition));
 
+            Debug.Log(distance);
+
             if (distance < minDistance)
             {
                 minDistance = distance;
@@ -107,7 +109,7 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
             }
         }
 
-        if(90f <= minDistance && minDistance < 90.00005f)
+        if(90f <= minDistance && minDistance < 90.0004f)
         {
             return closest;
         }
