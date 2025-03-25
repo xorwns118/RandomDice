@@ -100,8 +100,6 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
             float distance = Vector3.Distance(dice.transform.parent.TransformPoint(dice.transform.localPosition), 
                                               currentDice.transform.parent.TransformPoint(currentDice.transform.localPosition));
 
-            Debug.Log(distance);
-
             if (distance < minDistance)
             {
                 minDistance = distance;

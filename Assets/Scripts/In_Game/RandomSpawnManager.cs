@@ -45,7 +45,9 @@ public class RandomSpawnManager : MonoBehaviour
         }
 
         full.Add(empty[randomSpawnPoint]);
-        GameObject.Instantiate(useableDice[randomDice], empty[randomSpawnPoint].transform);
+        GameObject newDice = GameObject.Instantiate(useableDice[randomDice], empty[randomSpawnPoint].transform);
+        Dice dice = newDice.GetComponent<Dice>();
+        StartCoroutine(dice.SpawnDiceCoroutine());
         empty.RemoveAt(randomSpawnPoint);
     }
 
@@ -65,5 +67,6 @@ public class RandomSpawnManager : MonoBehaviour
         Dice dice = newDice.GetComponent<Dice>();
         dice.currentValue = newValue;
         DiceUpgradeManager.instance.SetNewDicePip(dice);
+        StartCoroutine(dice.SpawnDiceCoroutine());
     }
 }

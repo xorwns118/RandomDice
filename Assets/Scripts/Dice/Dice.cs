@@ -19,4 +19,19 @@ public class Dice : MonoBehaviour
     public GameObject pip; // 1 ~ 6
     public GameObject star; // 7
     public List<GameObject> pips; // 1 ~ 7
+
+    public IEnumerator SpawnDiceCoroutine()
+    {
+        float t = 0f;
+        float duration = 0.1f; // 몬스터가 커지는 데 걸리는 총 시간 (초)
+
+        while (t < 1f)
+        {
+            t += Time.deltaTime / duration;
+            transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, t);
+            yield return null;
+        }
+
+        transform.localScale = Vector3.one;
+    }
 }
