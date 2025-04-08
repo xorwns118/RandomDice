@@ -48,8 +48,7 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
         }
         else
         {
-            // 합칠 주사위 없을 때, 원래 자리로 복귀
-            transform.position = defaultPos;
+            StartCoroutine(ReturnPositionCoroutine());
         }
 
         // 배경 밝기 복원, 레이캐스트 다시 활성화
@@ -57,6 +56,20 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
         this.GetComponentInChildren<Image>().raycastTarget = true;
 
         currentDice.transform.localScale = new Vector3(1f, 1f, 1f);
+    }
+
+    // 대상이 없을 때 원래 자리로 복귀
+    private IEnumerator ReturnPositionCoroutine()
+    {
+        float t = 0f;
+        float duration = 0.1f;
+
+        while (t < 1f)
+        {
+            t += Time.deltaTime / duration;
+            this.transform.position = Vector3.Lerp(this.transform.position, defaultPos, t);
+            yield return null;
+        }
     }
 
     // 같은 이름의 주사위만 활성화, 배경 어둡게 처리

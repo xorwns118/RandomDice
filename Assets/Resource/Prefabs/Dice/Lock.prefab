@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 5}
-  m_SizeDelta: {x: 25, y: 25}
+  m_SizeDelta: {x: 35, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4195770240209295535
 CanvasRenderer:
@@ -165,7 +165,7 @@ MonoBehaviour:
   skillDamage: 0
   attackTarget: 1
   attackDamage: 30
-  attackSpeed: 0
+  attackSpeed: 0.8
   description: "\uBAAC\uC2A4\uD130 \uACF5\uACA9 \uC2DC \uC77C\uC815 \uD655\uB960\uB85C
     [\uC7A0\uAE08] \uB514\uBC84\uD504\uB97C \uAC78\uC5B4 \uC77C\uC815 \uC2DC\uAC04\uB3D9\uC548
     \uC6C0\uC9C1\uC774\uC9C0 \uBABB\uD558\uAC8C \uD55C\uB2E4. [\uC7A0\uAE08] \uB514\uBC84\uD504\uB294

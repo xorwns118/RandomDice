@@ -11,6 +11,8 @@ public class InGameManager : MonoBehaviour
 {
     public static InGameManager instance;
 
+    public Transform[] myDeckTransform;
+
     private void Awake()
     {
         if(instance == null)
@@ -21,6 +23,11 @@ public class InGameManager : MonoBehaviour
     private void Start()
     {
         Application.targetFrameRate = 60;
+
+        for (int i = 0; i < myDeckTransform.Length; i++)
+        {
+            myDeckTransform[i].GetComponent<Image>().sprite = RandomSpawnManager.instance.useableDice[i].GetComponent<Image>().sprite;
+        }
     }
 
     public void OnGameOver()

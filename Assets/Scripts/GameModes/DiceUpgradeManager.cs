@@ -50,21 +50,20 @@ public class DiceUpgradeManager : MonoBehaviour
     // 소환된 주사위 눈금 세팅
     public void SetNewDicePip(Dice dice)
     {
-        if (dice.currentValue < 7)
+        if (dice.currentValue == 7)
         {
-            for (int i = 0; i < dice.currentValue - 1; i++)
-            {
-                GameObject newPip = GameObject.Instantiate(dice.pip);
-                newPip.transform.SetParent(dice.gameObject.transform);
-                dice.pips.Add(newPip); 
-            } // 로직 수정 필요 Dice에 대해 NullReferenceException 발생.
-
-            SetPipPosition(dice.currentValue - 1, dice.pips);
-
+            MaxUpgrade(dice);
             return;
         }
 
-        dice.star.SetActive(true);
+        for (int i = 0; i < dice.currentValue - 1; i++)
+        {
+            GameObject newPip = GameObject.Instantiate(dice.pip);
+            newPip.transform.SetParent(dice.gameObject.transform);
+            dice.pips.Add(newPip);
+        } // 로직 수정 필요 Dice에 대해 NullReferenceException 발생.
+
+        SetPipPosition(dice.currentValue - 1, dice.pips);
     }
 
     // 눈금 생성
@@ -90,8 +89,6 @@ public class DiceUpgradeManager : MonoBehaviour
         }
 
         dice.star.SetActive(true);
-
-        dice.currentValue++;
     }
 
     // 7레벨이 아닐 경우 별 제거
@@ -158,10 +155,6 @@ public class DiceUpgradeManager : MonoBehaviour
                 default:
                     break;
             }
-        }
-        else
-        {
-            Debug.Log("Max Value");
         }
     }
 

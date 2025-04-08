@@ -9,11 +9,11 @@ public class Monster : MonoBehaviour
     public int hp;
 
     private RectTransform rectTransform;
-    private bool isMovingY = true;
-    private bool isMovingX = false;
+    public bool isMovingY = true;
+    public bool isMovingX = false;
 
-    private float targetY = 665f;
-    private float targetX = 860f;
+    private const float targetY = 665f;
+    private const float targetX = 860f;
 
     private void Start()
     {
@@ -24,11 +24,6 @@ public class Monster : MonoBehaviour
 
     private void Update()
     {
-        if(hp <= 0)
-        {
-            Destroy(this.gameObject);
-        }
-
         if (isMovingY) // X 좌표 고정 후 움직임
         {
             Vector2 pos = rectTransform.anchoredPosition;
@@ -71,5 +66,16 @@ public class Monster : MonoBehaviour
         }
 
         transform.localScale = Vector3.one;
+    }
+
+    public void TakeDamage(int amount)
+    {
+        hp -= amount;
+        Debug.Log($"{gameObject.name} hit! HP: {hp}");
+
+        if (hp <= 0)
+        {
+            // Destroy(gameObject);
+        }
     }
 }

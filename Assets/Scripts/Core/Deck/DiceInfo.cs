@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class DiceInfo : MonoBehaviour
 {
+    [Header("Dice Info UI Elements")]
     public Text diceName;
     public Image diceImage;
     public Text skillDamage;

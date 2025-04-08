@@ -9,7 +9,6 @@ public class RandomSpawnManager : MonoBehaviour
     public static RandomSpawnManager instance;
 
     public GameObject[] useableDice;
-    public Transform[] myDeckTransform;
     public GameObject[] diceSpawnPoints;
     public List<GameObject> empty;
     public List<GameObject> full;
@@ -25,11 +24,6 @@ public class RandomSpawnManager : MonoBehaviour
     private void Start()
     {
         full = new List<GameObject>();
-
-        for (int i = 0; i < myDeckTransform.Length; i++)
-        {
-            GameObject.Instantiate(useableDice[i], myDeckTransform[i]);
-        }
     }
 
     // 주사위를 랜덤한 위치에 소환
@@ -40,7 +34,6 @@ public class RandomSpawnManager : MonoBehaviour
 
         if (empty.Count == 0)
         {
-            Debug.Log("주사위를 소환할 공간이 없습니다.");
             return;
         }
 
