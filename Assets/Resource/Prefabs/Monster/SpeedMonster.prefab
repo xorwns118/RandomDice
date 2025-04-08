@@ -91,3 +91,6 @@ MonoBehaviour:
   monsterName: SpeedMonster
   moveSpeed: 150
   hp: 50
+  cost: 10
+  isMovingY: 1
+  isMovingX: 0

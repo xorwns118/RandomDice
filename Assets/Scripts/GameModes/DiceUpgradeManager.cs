@@ -61,7 +61,7 @@ public class DiceUpgradeManager : MonoBehaviour
             GameObject newPip = GameObject.Instantiate(dice.pip);
             newPip.transform.SetParent(dice.gameObject.transform);
             dice.pips.Add(newPip);
-        } // 로직 수정 필요 Dice에 대해 NullReferenceException 발생.
+        }
 
         SetPipPosition(dice.currentValue - 1, dice.pips);
     }

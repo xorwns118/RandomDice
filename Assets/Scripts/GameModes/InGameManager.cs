@@ -11,7 +11,15 @@ public class InGameManager : MonoBehaviour
 {
     public static InGameManager instance;
 
+    [Header("My Field Info")]
     public Transform[] myDeckTransform;
+    public int spawnCost = 10;
+    public int sp = 100;
+
+    [Header("UI")]
+    public Text spText;
+    public Text spawnCostText;
+
 
     private void Awake()
     {
@@ -29,6 +37,21 @@ public class InGameManager : MonoBehaviour
             myDeckTransform[i].GetComponent<Image>().sprite = RandomSpawnManager.instance.useableDice[i].GetComponent<Image>().sprite;
         }
     }
+
+    public void SpawnDiceButton()
+    {
+        sp -= spawnCost;
+        spawnCost += 10;
+
+        spText.text = sp.ToString();
+        spawnCostText.text = spawnCost.ToString();
+    }
+
+    public void DestroyedMonster(int cost)
+    {
+        sp += cost;
+        spText.text = InGameManager.instance.sp.ToString();
+    }    
 
     public void OnGameOver()
     {

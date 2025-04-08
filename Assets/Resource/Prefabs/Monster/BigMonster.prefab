@@ -91,3 +91,6 @@ MonoBehaviour:
   monsterName: BigMonster
   moveSpeed: 90
   hp: 1000
+  cost: 50
+  isMovingY: 1
+  isMovingX: 0

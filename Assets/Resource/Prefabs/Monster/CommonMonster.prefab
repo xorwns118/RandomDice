@@ -91,3 +91,6 @@ MonoBehaviour:
   monsterName: CommonMonster
   moveSpeed: 100
   hp: 100
+  cost: 10
+  isMovingY: 1
+  isMovingX: 0

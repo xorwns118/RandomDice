@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -33,7 +34,7 @@ public class Dice : MonoBehaviour
 
     private void Update()
     {
-        if (MonsterSpawnManager_GameMode2.instance.spawnMonsterList != null)
+        if (MonsterSpawnManager_GameMode2.instance.spawnMonsterList.Count != 0)
         {
             targetMonster = MonsterSpawnManager_GameMode2.instance.spawnMonsterList[0];
         }
@@ -43,9 +44,8 @@ public class Dice : MonoBehaviour
             isAttack = false;
         }
 
-        if (!isAttack && !isCoroutinePlaying)
+        if (targetMonster != null && !isAttack && !isCoroutinePlaying)
         {
-            Debug.Log($"{name} 공격 시작");
             isAttack = true;
             isCoroutinePlaying = true;
             StartCoroutine(DiceAttackCoroutine());
@@ -67,45 +67,60 @@ public class Dice : MonoBehaviour
         transform.localScale = Vector3.one;
     }
 
+    // 공격 코루틴
     public IEnumerator DiceAttackCoroutine()
     {
         while(isAttack)
         {
-            Debug.Log($"{name} 공격 실행");
-            StartCoroutine(PipCoroutine(targetMonster));
+            if(targetMonster == null)
+            {
+                isAttack = false;
+                isCoroutinePlaying = false;
+                yield break;
+            }
 
-            yield return new WaitForSeconds(5f);
+            StartCoroutine(MovePipCoroutine(targetMonster));
+
+            // 공격 속도만큼 대기
+            yield return new WaitForSeconds(attackSpeed);
         }
 
+        isAttack = false;
         isCoroutinePlaying = false;
     }
 
-    public IEnumerator PipCoroutine(Monster targetMonster)
+    // 몬스터를 피격하는 pip 이동 코루틴
+    public IEnumerator MovePipCoroutine(Monster targetMonster)
     {
-        Vector3 targetPos = targetMonster.transform.position;
-        Transform monsterField = targetMonster.transform.parent;
-
         GameObject newPip = GameObject.Instantiate(pip, this.transform);
-        newPip.transform.SetParent(monsterField);
-        newPip.transform.localScale = Vector3.one;
-
         Vector3 startPos = newPip.transform.position;
 
-        float speed = 20f; // 이동 속도 (유닛/초)
-        float distance = Vector3.Distance(startPos, targetPos);
+        float speed = 10f; // 이동 속도 (높을수록 빠름)
+        float distance = Vector3.Distance(startPos, targetMonster.transform.position);
         float duration = distance / speed; // 거리 비례한 도달 시간
 
         float t = 0f;
 
         while (t < 1f)
         {
+            if(targetMonster == null)
+            {
+                // 타겟 몬스터가 사라지면 오브젝트 파괴 후 코루틴 종료
+                Destroy(newPip);
+                yield break;
+            }
+
             t += Time.deltaTime / duration;
-            newPip.transform.position = Vector3.Lerp(startPos, targetPos, t);
+            newPip.transform.position = Vector3.Lerp(startPos, targetMonster.transform.position, t);
+
             yield return null;
         }
 
-        newPip.transform.position = targetPos;
-        targetMonster.TakeDamage(attackDamage);
+        if (targetMonster != null)
+        {
+            targetMonster.TakeDamage(attackDamage);
+        }
+
         Destroy(newPip);
     }
 }

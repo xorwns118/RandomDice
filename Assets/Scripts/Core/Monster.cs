@@ -7,6 +7,7 @@ public class Monster : MonoBehaviour
     public string monsterName;
     public float moveSpeed;
     public int hp;
+    public int cost;
 
     private RectTransform rectTransform;
     public bool isMovingY = true;
@@ -14,6 +15,8 @@ public class Monster : MonoBehaviour
 
     private const float targetY = 665f;
     private const float targetX = 860f;
+
+    public bool isDead = false;
 
     private void Start()
     {
@@ -45,8 +48,12 @@ public class Monster : MonoBehaviour
 
             if (pos.x >= targetX)
             {
-                InGameManager.instance.OnGameOver();
+                /*테스트*/
                 Destroy(this.gameObject);
+                MonsterSpawnManager_GameMode2.instance.spawnMonsterList.Remove(this);
+                /*테스트*/
+
+                InGameManager.instance.OnGameOver();
             }
 
             rectTransform.anchoredPosition = pos;
@@ -71,11 +78,13 @@ public class Monster : MonoBehaviour
     public void TakeDamage(int amount)
     {
         hp -= amount;
-        Debug.Log($"{gameObject.name} hit! HP: {hp}");
 
-        if (hp <= 0)
+        if (hp <= 0 && !isDead)
         {
-            // Destroy(gameObject);
+            InGameManager.instance.DestroyedMonster(cost);
+            MonsterSpawnManager_GameMode2.instance.spawnMonsterList.Remove(this);
+            Destroy(gameObject);
+            isDead = true;
         }
     }
 }

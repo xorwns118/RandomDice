@@ -29,19 +29,31 @@ public class RandomSpawnManager : MonoBehaviour
     // 주사위를 랜덤한 위치에 소환
     public void SpawnDiceInRandomPoint()
     {
-        int randomDice = Random.Range(0, useableDice.Length);
-        int randomSpawnPoint = Random.Range(0, empty.Count);
+        int sp = InGameManager.instance.sp;
+        int spawnCost = InGameManager.instance.spawnCost;
 
-        if (empty.Count == 0)
+        if (sp >= spawnCost)
         {
-            return;
-        }
+            InGameManager.instance.SpawnDiceButton();
 
-        full.Add(empty[randomSpawnPoint]);
-        GameObject newDice = GameObject.Instantiate(useableDice[randomDice], empty[randomSpawnPoint].transform);
-        Dice dice = newDice.GetComponent<Dice>();
-        StartCoroutine(dice.SpawnDiceCoroutine());
-        empty.RemoveAt(randomSpawnPoint);
+            int randomDice = Random.Range(0, useableDice.Length);
+            int randomSpawnPoint = Random.Range(0, empty.Count);
+
+            if (empty.Count == 0)
+            {
+                return;
+            }
+
+            full.Add(empty[randomSpawnPoint]);
+            GameObject newDice = GameObject.Instantiate(useableDice[randomDice], empty[randomSpawnPoint].transform);
+            Dice dice = newDice.GetComponent<Dice>();
+            StartCoroutine(dice.SpawnDiceCoroutine());
+            empty.RemoveAt(randomSpawnPoint);
+        }
+        else
+        {
+            Debug.Log("소환할 비용이 부족합니다.");
+        }
     }
 
     // 두 주사위를 합치고 타겟 위치에 새로운 주사위 스폰
