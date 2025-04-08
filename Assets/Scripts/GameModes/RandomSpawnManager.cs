@@ -9,7 +9,6 @@ public class RandomSpawnManager : MonoBehaviour
     public static RandomSpawnManager instance;
 
     public GameObject[] useableDice;
-    public Transform[] myDeckTransform;
     public GameObject[] diceSpawnPoints;
     public List<GameObject> empty;
     public List<GameObject> full;
@@ -25,30 +24,36 @@ public class RandomSpawnManager : MonoBehaviour
     private void Start()
     {
         full = new List<GameObject>();
-
-        for (int i = 0; i < myDeckTransform.Length; i++)
-        {
-            GameObject.Instantiate(useableDice[i], myDeckTransform[i]);
-        }
     }
 
     // 주사위를 랜덤한 위치에 소환
     public void SpawnDiceInRandomPoint()
     {
-        int randomDice = Random.Range(0, useableDice.Length);
-        int randomSpawnPoint = Random.Range(0, empty.Count);
+        int sp = InGameManager.instance.sp;
+        int spawnCost = InGameManager.instance.spawnCost;
 
-        if (empty.Count == 0)
+        if (sp >= spawnCost)
         {
-            Debug.Log("주사위를 소환할 공간이 없습니다.");
-            return;
-        }
+            InGameManager.instance.SpawnDiceButton();
 
-        full.Add(empty[randomSpawnPoint]);
-        GameObject newDice = GameObject.Instantiate(useableDice[randomDice], empty[randomSpawnPoint].transform);
-        Dice dice = newDice.GetComponent<Dice>();
-        StartCoroutine(dice.SpawnDiceCoroutine());
-        empty.RemoveAt(randomSpawnPoint);
+            int randomDice = Random.Range(0, useableDice.Length);
+            int randomSpawnPoint = Random.Range(0, empty.Count);
+
+            if (empty.Count == 0)
+            {
+                return;
+            }
+
+            full.Add(empty[randomSpawnPoint]);
+            GameObject newDice = GameObject.Instantiate(useableDice[randomDice], empty[randomSpawnPoint].transform);
+            Dice dice = newDice.GetComponent<Dice>();
+            StartCoroutine(dice.SpawnDiceCoroutine());
+            empty.RemoveAt(randomSpawnPoint);
+        }
+        else
+        {
+            Debug.Log("소환할 비용이 부족합니다.");
+        }
     }
 
     // 두 주사위를 합치고 타겟 위치에 새로운 주사위 스폰

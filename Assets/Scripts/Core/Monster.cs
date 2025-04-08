@@ -7,13 +7,16 @@ public class Monster : MonoBehaviour
     public string monsterName;
     public float moveSpeed;
     public int hp;
+    public int cost;
 
     private RectTransform rectTransform;
-    private bool isMovingY = true;
-    private bool isMovingX = false;
+    public bool isMovingY = true;
+    public bool isMovingX = false;
 
-    private float targetY = 665f;
-    private float targetX = 860f;
+    private const float targetY = 665f;
+    private const float targetX = 860f;
+
+    public bool isDead = false;
 
     private void Start()
     {
@@ -24,11 +27,6 @@ public class Monster : MonoBehaviour
 
     private void Update()
     {
-        if(hp <= 0)
-        {
-            Destroy(this.gameObject);
-        }
-
         if (isMovingY) // X 좌표 고정 후 움직임
         {
             Vector2 pos = rectTransform.anchoredPosition;
@@ -50,8 +48,12 @@ public class Monster : MonoBehaviour
 
             if (pos.x >= targetX)
             {
-                InGameManager.instance.OnGameOver();
+                /*테스트*/
                 Destroy(this.gameObject);
+                MonsterSpawnManager_GameMode2.instance.spawnMonsterList.Remove(this);
+                /*테스트*/
+
+                InGameManager.instance.OnGameOver();
             }
 
             rectTransform.anchoredPosition = pos;
@@ -71,5 +73,18 @@ public class Monster : MonoBehaviour
         }
 
         transform.localScale = Vector3.one;
+    }
+
+    public void TakeDamage(int amount)
+    {
+        hp -= amount;
+
+        if (hp <= 0 && !isDead)
+        {
+            InGameManager.instance.DestroyedMonster(cost);
+            MonsterSpawnManager_GameMode2.instance.spawnMonsterList.Remove(this);
+            Destroy(gameObject);
+            isDead = true;
+        }
     }
 }
